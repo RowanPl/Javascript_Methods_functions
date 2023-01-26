@@ -14,6 +14,16 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // * Hoe zorgt ik ervoor dat wanneer ik een cijfer tegenkom die aan de conditie voldoet, ik dit ergens kan bijhouden?
 // Log het antwoord in de terminal.
 
+ let cumlaude = 0 ;
+    for (let i = 0; i < grades.length; i++) {
+        if (grades[i] >= 8) {
+          cumlaude = cumlaude +1;
+        }
+}
+console.log(cumlaude);
+
+
+
 // ---- Verwachte uitkomst: 6
 
 
@@ -27,9 +37,18 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // cumLaude([6, 4, 5]) geeft 0
 // cumLaude([8, 9, 4, 6, 10]) geeft 3
 
-
-
-
+function cumLaude(ArrayList) {
+    let cumlaude = 0 ;
+    for (let i = 0; i < grades.length; i++) {
+        if (ArrayList[i] >= 8) {
+            cumlaude = cumlaude +1;
+        }
+    }
+    return cumlaude;
+}
+console.log(cumLaude(grades));
+console.log(cumLaude([6,4,5]));
+console.log(cumLaude([8,9,4,6,10]));
 /* Opdracht  2: Gemiddeld cijfer */
 
 /* 2a: Script schrijven  */
@@ -40,6 +59,13 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // * Hoe zorgt ik ervoor dat ik alle waardes uit de array kan langslopen, ook als de array wel 100 entries zou bevatten?
 // Log het antwoord in de terminal.
 
+const hoeveelheid = grades.length;
+let totaal = 0;
+for (let i = 0; i < grades.length; i++){
+    totaal = totaal + grades[i];
+}
+console.log(totaal / hoeveelheid);
+
 // ---- Verwachte uitkomst: 6.642857142857143
 
 
@@ -47,13 +73,33 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // Schrijf een functie genaamd averageGrade, die een array van cijfers verwacht (zoals grades) en het gemiddelde cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 2a.
 // Zorg ervoor dat jouw functie ook werkt als we een andere array willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
 // Log het antwoord in de terminal.
+function averageGrade(ArrayList){
+    const hoeveel = ArrayList.length;
+    let totaal = 0 ;
+
+    for (let i = 0; i < ArrayList.length; i++){
+       totaal = totaal + ArrayList[i];
+    }
+    const average = totaal / hoeveel ;
+    return average;
+}
+console.log(averageGrade(grades));
+console.log(averageGrade([6,4,5]));
+console.log(averageGrade([8,9,4,6,10]));
 
 // ---- Verwachte uitkomsten:
 // averageGrade(grades) geeft 6.642857142857143
 // averageGrade([6, 4, 5]) geeft xxxx
 // averageGrade([8, 9, 4, 6, 10]) geeft xxxx
+function roundItOff(number){
+    let math;
+    math.round(number);
+    return number;
+}
 
-
+console.log((Math.round(averageGrade(grades) * 100) / 100));
+console.log((Math.round(averageGrade([6,4,5]) * 100) / 100));
+console.log((Math.round(averageGrade([8,9,4,6,10]) * 100) / 100));
 /* 2c: Afronden op twee decimalen */
 // Zorg ervoor dat het gemiddelde cijfer dat wordt teruggegeven uit de functie netjes wordt afgerond op twee decimalen.
 // Tip: Google is your best friend!
@@ -71,8 +117,15 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // Log het antwoord in de terminal.
 
 // ---- Verwachte uitkomst: 9
+function highestGrade(array) {
+    if (toString.call(array) !== "[object Array]")
+        return "Dit is geen array, Zet ze even tussen blokhaken!";
+    return Math.max.apply(null, array);
+}
 
-
+console.log(highestGrade(grades));
+console.log(highestGrade([6, 4, 5]));
+console.log(highestGrade([8,9,4,6,10]));
 /* 3b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd highestGrade, die een array van cijfers verwacht (zoals grades) en het hoogste cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 3a.
 // Zorg ervoor dat jouw functie ook werkt als we een andere array willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
